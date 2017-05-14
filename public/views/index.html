@@ -9,6 +9,26 @@
     <title></title>
   </head>
   <body>
-      <h1> LETS GET SOMETHING ON THE DOMMMM</h1>
+    <div class="container">
+      <h1 class = "jumbotron"> Favorite Movies </h1>
+    </div>
+    <div class = "container">
+      <h3> Search for a movie:</h3>
+      <input />
+      <button> Submit </button>
+
+      <h3>Results:</h3>
+
+      <div ng-controller="OmdbController as omdb">
+       {{omdb.movieData.Title}}
+       <img ng-src="{{omdb.movieData.Poster}}" alt="">
+
+      </div> <!--end controller div -->
+
+      <h3> Favorites: </h3>
+
+    </div>
+
+
   </body>
 </html>
