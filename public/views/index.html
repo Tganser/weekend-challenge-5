@@ -8,20 +8,28 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
+  <body ng-app="myApp">
     <div class="container">
       <h1 class = "jumbotron"> Favorite Movies </h1>
     </div>
     <div class = "container">
       <h3> Search for a movie:</h3>
-      <input />
-      <button> Submit </button>
-
-      <h3>Results:</h3>
-
       <div ng-controller="OmdbController as omdb">
-       {{omdb.movieData.Title}}
-       <img ng-src="{{omdb.movieData.Poster}}" alt="">
+        <input type="text" value="" , ng-model="omdb.searchInput" placeholder="Title">
+
+        <button ng-click="omdb.searchOMDB()"> Submit </button>
+
+        <h3>Results:</h3>
+    
+        <div class="" ng-repeat="movie in omdb.searchResults">
+          <p>
+            {{movie.Title}} {{movie.Year}}
+          </p>
+        </div>
+
+
+         {{omdb.movieData.Title}}
+         <img ng-src="{{omdb.movieData.Poster}}" alt="">
 
       </div> <!--end controller div -->
 
