@@ -12,18 +12,23 @@
     <div class="container">
       <h1 class = "jumbotron"> Favorite Movies </h1>
     </div>
+
+    <div class= "container">
+      <navbar>Search Movies --  My Favorites </navbar>
+    </div>
+
     <div class = "container">
       <h3> Search for a movie:</h3>
-      <div ng-controller="OmdbController as omdb">
+      <div ng-controller="OmdbController as omdb" ng-init="omdb.getFavorites()">
         <input type="text" value="" , ng-model="omdb.searchInput" placeholder="Title">
 
         <button ng-click="omdb.searchOMDB()"> Submit </button>
 
         <h3>Results:</h3>
-    
+
         <div class="" ng-repeat="movie in omdb.searchResults">
           <p>
-            {{movie.Title}} {{movie.Year}}
+            {{movie.Title}} {{movie.Year}} <button type="button" ng-attr-id={{movie.imdbID}} ng-click="omdb.addtoFavs(movie)">Favorite</button>
           </p>
         </div>
 
@@ -31,9 +36,15 @@
          {{omdb.movieData.Title}}
          <img ng-src="{{omdb.movieData.Poster}}" alt="">
 
+         <h3> Favorites: </h3>
+         <!-- {{omdb.favorites}} -->
+
+         <div ng-repeat="thing in omdb.favorites">
+           {{thing.title}} {{thing.year}} <button type="button" ng-click="omdb.removeFav(thing)">Remove</button>
+         </div>
+
       </div> <!--end controller div -->
 
-      <h3> Favorites: </h3>
 
     </div>
 
